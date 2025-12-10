@@ -23,9 +23,6 @@ services:
       APP_BASE_URL: ${APP_BASE_URL}
     depends_on:
       - compras-mongodb
-    networks:
-      compras:
-      undersounds:
     profiles:
       - prod
 
@@ -39,13 +36,6 @@ services:
       MONGODB_DATABASE: ${MONGODB_DATABASE}
     volumes:
       - compras-mongodb-data:/bitnami/mongodb
-    networks:
-      compras:
 
 volumes:
   compras-mongodb-data:
-
-networks:
-  compras:
-  undersounds:
-    external: true
