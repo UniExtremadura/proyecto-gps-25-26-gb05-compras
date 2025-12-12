@@ -17,7 +17,9 @@ export class ArtistWalletService {
 
 	async findByArtistUuid(artistUuid: string): Promise<ArtistWallet> {
 		const wallet = await this.artistWalletModel.findOne({ artistUuid });
-		if (!wallet) throw new NotFoundException();
+		if (!wallet) {
+            return await this.create(artistUuid);
+        }
 		return wallet;
 	}
 
